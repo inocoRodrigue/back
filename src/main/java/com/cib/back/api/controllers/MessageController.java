@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/messages/")
+@RequestMapping(path = "/api/messages")
 public class MessageController {
     private final MessageService messageService;
 
@@ -20,7 +20,7 @@ public class MessageController {
         this.messageService = messageService;
     }
 
-    @GetMapping()
+    @GetMapping("")
     public ResponseEntity<Response> getAllMessage() {
         Response response = Response.from(messageService.getAllMessage());
 

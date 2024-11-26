@@ -8,5 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface MQMessageMapper {
+    MessageDTO toDTO(MQMessage mqMessage);
+
     List<MessageDTO> toDTOList(List<MQMessage> mqMessages);
 }

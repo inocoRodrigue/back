@@ -8,6 +8,7 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ public class IbmMqReader implements MQReader {
     public Optional<MQMessage> readMessage() {
 
         try{
-            String messageContent = jmsTemplate.receiveAndConvert(QUEUE).toString();
+            String messageContent = Objects.requireNonNull(jmsTemplate.receiveAndConvert(QUEUE)).toString();
             MQMessage mqMessage = MQMessage.builder()
                                             .content(messageContent)
                                             .timestamp(String.valueOf(System.currentTimeMillis()))
