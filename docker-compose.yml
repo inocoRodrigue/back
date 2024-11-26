@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  mq:
+    image: ibmcom/mq
+    container_name: ibm_mq
+    environment:
+      - LICENSE=accept
+      - MQ_QMGR_NAME=QM1
+    ports:
+      - "1414:1414"
+      - "9443:9443"
+    restart: unless-stopped
+
+  oracle_db:
+    image: gvenzl/oracle-xe
+    container_name: oracle_db
+    environment:
+      - ORACLE_PASSWORD=password
+      - ORACLE_DATABASE=test_db
+      - ORACLE_USER=test_user
+    ports:
+      - "1521:1521"
+    restart: unless-stopped
