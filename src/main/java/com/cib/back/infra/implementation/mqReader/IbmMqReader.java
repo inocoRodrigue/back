@@ -38,8 +38,8 @@ public class IbmMqReader implements MQReader {
 
             return Optional.of(mqMessage);
         }catch(JmsException | NullPointerException ex) {
-            logger.log(Level.INFO, "Failed to read message in ibmMq : " + ex.getMessage());
+            logger.log(Level.INFO, "Failed to read message in ibmMq due to : " + ex.getMessage());
+            return Optional.empty();
         }
-        return Optional.empty();
     }
 }
