@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/partner")
+@RequestMapping("/api/partners")
 @Tag(name = "Partner Management", description = "APIs for managing partner")
 public class PartnerController {
     private final PartnerService partnerService;
@@ -24,7 +24,7 @@ public class PartnerController {
         this.partnerService = partnerService;
     }
 
-    @PostMapping()
+    @PostMapping("")
     @Operation(summary = "Add partner", description = "Add one partner in database")
     public ResponseEntity<List<PartnerPayload>> addPartner(@Valid @RequestBody PartnerPayload partnerPayload) {
         List<PartnerPayload> partnerPayloads = partnerService.addPartner(partnerPayload);
@@ -32,7 +32,7 @@ public class PartnerController {
         return ResponseEntity.created(URI.create("api/partner/id")).body(partnerPayloads);
     }
 
-    @GetMapping()
+    @GetMapping("")
     @Operation(summary = "Get partners", description = "Retrieve all partner in database")
     public ResponseEntity<List<PartnerPayload>> getAllPartner() {
         List<PartnerPayload> partnerPayloads = partnerService.getAllPartner();
