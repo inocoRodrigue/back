@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PartnerManager {
@@ -23,6 +22,7 @@ public class PartnerManager {
 
     public void addPartner(Partner partner) {
         // TODO : add verification before adding element (value object or not ?)
+        partner.setId(null); // TODO : configure jackson for Long initial value to avoid this code
         partnerRepository.save(partner);
     }
 
