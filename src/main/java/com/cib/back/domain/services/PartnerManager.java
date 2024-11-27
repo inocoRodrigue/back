@@ -25,4 +25,8 @@ public class PartnerManager {
         // TODO : add verification before adding element (value object or not ?)
         partnerRepository.save(partner);
     }
+
+    public void deletePartner(Long id) {
+        partnerRepository.deleteById(id);
+    }
 }

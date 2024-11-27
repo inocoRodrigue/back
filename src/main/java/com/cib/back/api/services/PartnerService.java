@@ -20,7 +20,7 @@ public class PartnerService {
         this.partnerManager = partnerManager;
     }
 
-    private List<PartnerPayload> getAllPartner() {
+    public List<PartnerPayload> getAllPartner() {
         List<Partner> partners = partnerManager.getAllPartner();
 
         return partnerMapper.toPayload(partners);
@@ -32,5 +32,9 @@ public class PartnerService {
         partnerManager.addPartner(partner);
 
         return getAllPartner();
+    }
+
+    public void deletePartner(Long id) {
+        this.partnerManager.deletePartner(id);
     }
 }
