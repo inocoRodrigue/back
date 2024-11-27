@@ -1,6 +1,5 @@
 package com.cib.back.api.controllers;
 
-import com.cib.back.api.models.Response;
 import com.cib.back.api.models.dto.MessageDTO;
 import com.cib.back.api.services.MessageService;
 import org.junit.jupiter.api.BeforeEach;
