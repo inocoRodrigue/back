@@ -31,6 +31,9 @@ public class IbmMqReader implements MQReader {
     public Optional<MQMessage> readMessage() {
 
         try{
+            jmsTemplate.convertAndSend(QUEUE, "One message every 5s"); // Send Message to have exemple on front view
+
+
             String messageContent = Objects.requireNonNull(jmsTemplate.receiveAndConvert(QUEUE)).toString();
             MQMessage mqMessage = MQMessage.builder()
                                             .content(messageContent)

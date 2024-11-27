@@ -30,7 +30,7 @@ class MessageControllerTest {
         when(messageService.getAllMessage()).thenReturn(anyMessageDtoList);
 
         // When
-        ResponseEntity<Response> responseEntity = messageController.getAllMessage();
+        ResponseEntity<List<MessageDTO>> responseEntity = messageController.getAllMessage();
 
         // Then
         assertEquals(OK, responseEntity.getStatusCode());
@@ -43,13 +43,11 @@ class MessageControllerTest {
         when(messageService.getAllMessage()).thenReturn(anyMessageDtoList);
 
         // When
-        ResponseEntity<Response> responseEntity = messageController.getAllMessage();
+        ResponseEntity<List<MessageDTO>> responseEntity = messageController.getAllMessage();
 
         // Then
-        Response expected = new Response(anyMessageDtoList, null);
-
-        Response responseBody = responseEntity.getBody();
-        assertEquals(expected, responseBody);
+        List<MessageDTO> responseBody = responseEntity.getBody();
+        assertEquals(anyMessageDtoList, responseBody);
 
         verify(messageService).getAllMessage();
     }
